@@ -13,7 +13,7 @@ O=o
 
 LIBS = $(LIBS) oleaut32.lib ole32.lib user32.lib advapi32.lib shell32.lib
 
-CFLAGS = $(CFLAGS) -c /nologo /Fo$O/ /W4 /WX /EHsc /MT /MP /GR- /GL /Gw /Gy
+CFLAGS = $(CFLAGS) -c /nologo /Fo$O/ /W4 /WX /EHsc /MT /MP /GR- /GL /Gw /Gy /Arch:AVX
 
 !IFDEF MY_CONSOLE
 CFLAGS = $(CFLAGS) -D_CONSOLE
@@ -31,6 +31,7 @@ LFLAGS = $(LFLAGS) /DLL /DEF:$(DEF_FILE)
 PROGPATH = $O\$(PROG)
 
 !IF "$(PLATFORM)" == "x64"
+CFLAGS = $(CFLAGS) /Arch:AVX
 MY_ML = ml64 /Dx64 /WX
 !ELSEIF "$(PLATFORM)" == "arm"
 MY_ML = armasm /WX
