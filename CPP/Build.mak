@@ -13,16 +13,16 @@ O=o
 
 LIBS = $(LIBS) oleaut32.lib ole32.lib user32.lib advapi32.lib shell32.lib
 
-CFLAGS = $(CFLAGS) -c /nologo /Fo$O/ /W4 /WX /EHsc /MT /MP /GL /Gw
+CFLAGS = $(CFLAGS) -c /nologo /Fo$O/ /W4 /WX /EHsc /MT /MP /Gr- /GL /Gw /Gy
 
 !IFDEF MY_CONSOLE
 CFLAGS = $(CFLAGS) -D_CONSOLE
 !ENDIF
 
-CFLAGS_O1 = $(CFLAGS) /O2
+CFLAGS_O1 = $(CFLAGS) /O1
 CFLAGS_O2 = $(CFLAGS) /O2 /Ob3
 
-LFLAGS = $(LFLAGS) /nologo /LTCG /LARGEADDRESSAWARE /OPT:REF,ICF,LBR
+LFLAGS = $(LFLAGS) /nologo /LTCG /LARGEADDRESSAWARE
 
 !IFDEF DEF_FILE
 LFLAGS = $(LFLAGS) /DLL /DEF:$(DEF_FILE)
